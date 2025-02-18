@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détection de Logos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Détection de Logos</h1>
+            <p>Veuillez déposer une image pour détecter les logos.</p>
+        </header>
+
+        <div class="upload-section">
+            <input type="file" id="fileInput">
+            <button class="upload-button" onclick="uploadImage()">Analyser l'image</button>
+        </div>
+
+        <div class="result-section">
+            <img id="resultImage" alt="Logo détecté" style="display: none;">
+            <div id="resultText"></div>
+        </div>
+    </div>
+
+    <script>
+        async function uploadImage() {
+            let fileInput = document.getElementById("fileInput");
+            if (fileInput.files.length === 0) {
+                alert("Sélectionnez une image !");
+                return;
+            }
+
+            let formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+
+            let response = await fetch("http://localhost:5000/detect", {
+                method: "POST",
+                body: formData
+            });
+
+            if (!response.ok) {
+                alert("Erreur lors de l'analyse de l'image");
+                return;
+            }
+
+            let data = await response.json();
+            let imageUrl = "http://localhost:5000" + data.image_url;
+            document.getElementById("resultImage").src = imageUrl;
+            document.getElementById("resultImage").style.display = "block";
+
+            let resultText = "Logos détectés :<br>";
+            data.detected_objects.forEach(obj => {
+                resultText += `${obj.label} (confiance : ${obj.score.toFixed(2)})<br>`;
+            });
+            document.getElementById("resultText").innerHTML = resultText;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;  /* Aligner en haut pour ne pas centrer verticalement */
+    height: 100vh;
+    overflow-y: auto; /* Permet le défilement vertical */
+    padding-bottom: 50px; /* Ajoute un peu d'espace en bas pour un meilleur défilement */
+}
+
+/* Container */
+.container {
+    text-align: center;
+    padding: 40px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    max-width: 600px;
+    width: 100%;
+    margin-top: 20px;
+    padding-bottom: 50px; /* Ajoute un peu de marge en bas du conteneur */
+    max-height: 90vh; /* Permet de laisser un peu plus d'espace */
+    overflow-y: auto; /* Permet de défiler dans le container si nécessaire */
+}
+
+
+
+
+
+
+/* Header */
+header h1 {
+    color: #1e3a8a;
+    font-weight: 600;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #6b7280;
+    font-weight: 300;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Upload Section */
+.upload-section {
+    margin-bottom: 30px;
+}
+
+#fileInput {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+.upload-button {
+    background-color: #3b82f6;
+    color: white;
+    font-size: 1rem;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+}
+
+.upload-button:hover {
+    background-color: #2563eb;
+}
+
+/* Result Section */
+.result-section {
+    margin-top: 40px;
+    max-height: 60vh; /* Limite la hauteur des résultats pour qu'ils ne prennent pas trop d'espace */
+    overflow-y: auto; /* Permet de défiler si les résultats sont longs */
+    padding-bottom: 40px; /* Ajoute un peu d'espace au bas de la section de résultats */
+}
+
+#resultImage {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#resultText {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #1e3a8a;
+}

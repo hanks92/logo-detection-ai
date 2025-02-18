@@ -1,0 +1,13 @@
+train: /home/alexandre/logo-detection-ai/dataset/train/images
+val: /home/alexandre/logo-detection-ai/dataset/valid/images
+test: /home/alexandre/logo-detection-ai/dataset/test/images
+
+nc: 5
+names: ['APPLE', 'Google', 'Nvidia', 'intel', 'micosoft']
+
+roboflow:
+  workspace: ai-and-computer-vision
+  project: ai-and-computer-vision-v2
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/ai-and-computer-vision/ai-and-computer-vision-v2/dataset/1
