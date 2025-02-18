@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détection de Logos</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        input, button { margin: 10px; }
+        img { max-width: 80%; margin-top: 20px; border: 2px solid black; }
+    </style>
+</head>
+<body>
+    <h1>Détection de Logos</h1>
+    <input type="file" id="fileInput">
+    <button onclick="uploadImage()">Analyser l'image</button>
+    <br>
+    <img id="resultImage" style="display: none;">
+    
+    <script>
+        async function uploadImage() {
+            let fileInput = document.getElementById("fileInput");
+            if (fileInput.files.length === 0) {
+                alert("Sélectionnez une image !");
+                return;
+            }
+
+            let formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+
+            let response = await fetch("http://localhost:5000/detect", {
+                method: "POST",
+                body: formData
+            });
+
+            if (!response.ok) {
+                alert("Erreur lors de l'analyse de l'image");
+                return;
+            }
+
+            let blob = await response.blob();
+            let imageUrl = URL.createObjectURL(blob);
+            document.getElementById("resultImage").src = imageUrl;
+            document.getElementById("resultImage").style.display = "block";
+        }
+    </script>
+</body>
+</html>
